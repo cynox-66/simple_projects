@@ -1,0 +1,334 @@
+/* RESET + DEFAULT STYLING */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  color: white;
+}
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------- NAVBAR ---------------- */
+#nav {
+  height: 145px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 150px;
+  gap: 50px;
+  justify-content: flex-start;
+  position: fixed;
+  z-index: 999;
+}
+
+#nav img {
+  height: 75px;
+}
+
+#nav h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------------- CUSTOM CURSOR ---------------- */
+
+/* IMPORTANT: cursor must NOT block hover events */
+#cursor,
+#cursor-blur {
+  pointer-events: none; /* Allows hover to reach cards and nav */
+}
+
+#cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #bae83b;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 99;
+
+  /* We animate transform but NOT left/top */
+  transition: transform 0.15s ease, background-color 0.25s ease, border 0.25s ease;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#cursor-blur {
+  height: 400px;
+  width: 400px;
+  background-color: #bae83b2a;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9;
+  filter: blur(50px);
+}
+
+/* ---------------- HERO VIDEO ---------------- */
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+}
+
+/* ---------------- PAGE 1 ---------------- */
+#main {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+
+#page1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 10;
+}
+
+#page1 h1 {
+  font-size: 100px;
+  font-weight: 900;
+  position: relative;
+}
+
+#page1 h1::before {
+  content: "Eat. Drink. Play.";
+  color: black;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  -webkit-text-stroke: 2px #bae83b;
+  z-index: -1;
+}
+
+#page1 h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#page1 p {
+  font-size: 18px;
+  font-weight: 300;
+  width: 45%;
+}
+
+/* ---------------- RUNNING TEXT SCROLLER ---------------- */
+#scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+#scroller::-webkit-scrollbar {
+  display: none;
+}
+
+#scroller-in {
+  animation: scroll 20s linear infinite;
+}
+
+#scroller h4 {
+  display: inline-block;
+  font-family: inherit;        /* ← Uses Montserrat correctly */
+  font-size: 92px;
+  font-weight: 900;            /* ← Uses the heavy Montserrat weight */
+  margin-right: 100px;
+  color: transparent;
+  -webkit-text-stroke: 2px #fcfcfa;
+  transition: color 0.3s linear, -webkit-text-stroke 0.3s linear;
+}
+
+/* Hover effect: text fills with green */
+#scroller h4:hover {
+  color: #bae83b;
+  -webkit-text-stroke: 2px #bae83b;
+}
+
+
+/* Moves text horizontally continuously */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+/* ---------------- ABOUT US SECTION ---------------- */
+#about_us {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+#about_us img {
+  width: 17%;
+  height: 62%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+#about_us_in {
+  width: 50%;
+  text-align: center;
+}
+
+#about_us_in h3 {
+  font-size: 52px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+#about_us_in p {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* ---------------- CARD SECTION ---------------- */
+
+/* perspective must be applied to container for 3D rotation to look real */
+#card-container {
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 70px;
+  position: relative;
+  z-index: 10;
+  perspective: 1000px; /* ✅ Critical for 3D depth */
+}
+
+.card {
+  position: relative;
+  height: 80%;
+  width: 25%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* Allows the card to exist in 3D space */
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Overlay that fades in on hover */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: #bae83b;
+  padding: 130px 22px;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none; /* ✅ Allows hover to reach the .card */
+  transition: opacity 0.6s ease;
+  z-index: 2; /* Place above background image */
+}
+
+.overlay h4,
+.overlay p {
+  color: #000;
+}
+
+/* On hover: overlay fades in */
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* On hover: slight 3D tilt + shadow */
+.card:hover {
+  transform: rotate3d(-1, 1, 0, 20deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Background image sources */
+#card1 { background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer.jpg?strip=all&lossy=1&sharp=1&ssl=1); }
+#card2 { background-image: url(https://static8.depositphotos.com/1006681/861/i/450/depositphotos_8616923-stock-photo-dinosaur.jpg); }
+#card3 { background-image: url(https://images.unsplash.com/photo-1593282153762-a41e3cceb06c?auto=format&q=80&w=987); }
+
+/* the green div */
+#green-div {
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to left bottom, #09c64b, #c1f927);
+}
+
+#green-div h4 {
+  color: black;
+  width: 40%;
+  font-size: 24px;
+  line-height: 46px;
+  text-align: center;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+#green-div img {
+  height: 100%;
+  object-fit: cover;
+  width: 12%;
+}
+
+
+/* ---------------- PAGE 3 REVIEW SLIDER ---------------- */
+#page3 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#page3 img {
+  position: absolute;
+  height: 60px;
+}
+
+#page3 #colon1 { left: 10%; top: 20%; }
+#page3 #colon2 { right: 10%; bottom: 30%; }
+
+#slider {
+  width: 70%;
+  text-align: center;
+  position: relative;
+}
+
+#slider p {
+  opacity: 0;
+  position: absolute;
+  transition: opacity 1.5s ease;
+}
+
+#slider p.active {
+  opacity: 1;
+  position: static;
+}
+
+/* Quote pop animation when text changes */
+.quote-left, .quote-right {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.animate-quote {
+  transform: scale(1.3);
+  opacity: 0.7;
+}
