@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drum Kit</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Arvo:700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="drumkit.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="title">Drum <span aria-hidden="true">🥁</span> Kit</h1>
+    <p class="subtitle">Play with your keyboard </p>
+  </header>
+
+  <main class="container" role="main">
+    <div class="pads" aria-label="Drum pads" role="group">
+      <button class="pad w drum" data-key="w" aria-label="Tom 1 (W)">w<span class="visually-hidden"> - Tom 1</span></button>
+      <button class="pad a drum" data-key="a" aria-label="Tom 2 (A)">a<span class="visually-hidden"> - Tom 2</span></button>
+      <button class="pad s drum" data-key="s" aria-label="Tom 3 (S)">s<span class="visually-hidden"> - Tom 3</span></button>
+      <button class="pad d drum" data-key="d" aria-label="Tom 4 (D)">d<span class="visually-hidden"> - Tom 4</span></button>
+      <button class="pad j drum" data-key="j" aria-label="Snare (J)">j<span class="visually-hidden"> - Snare</span></button>
+      <button class="pad k drum" data-key="k" aria-label="Crash (K)">k<span class="visually-hidden"> - Crash</span></button>
+      <button class="pad l drum" data-key="l" aria-label="Kick (L)">l<span class="visually-hidden"> - Kick</span></button>
+    </div>
+
+    <div class="controls">
+      <label for="volume">Volume</label>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.9" />
+    </div>
+  </main>
+
+  <footer class="site-footer">Music is lob ❤️ <strong></strong></footer>
+
+  <script src="drumkit.js" defer></script>
+</body>
+</html>
