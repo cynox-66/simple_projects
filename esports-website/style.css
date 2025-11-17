@@ -267,22 +267,22 @@ section {
 
 /* Background images for each card */
 .game-card:nth-child(1) {
-  background-image: url("/media/Ep8a1_Defiance_Riot\ Client\ -\ Launch\ Game\ Background\ 2560x1440_.png");
+  background-image: url("media/Ep8a1_Defiance_Riot\ Client\ -\ Launch\ Game\ Background\ 2560x1440_.png");
   filter: brightness(0.7);
 }
 
 .game-card:nth-child(2) {
-  background-image: url("/media/BGMi.jpg");
+  background-image: url("media/BGMi.jpg");
   filter: brightness(0.7);
 }
 
 .game-card:nth-child(3) {
-  background-image: url("/media/7ee5e34f8415793b62e243d88430b042.jpg");
+  background-image: url("media/7ee5e34f8415793b62e243d88430b042.jpg");
   filter: brightness(0.7);
 }
 
 .game-card:nth-child(4) {
-  background-image: url("/media/fb_image.png");
+  background-image: url("media/fb_image.png");
   filter: brightness(0.7);
 }
 
