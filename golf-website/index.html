@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidcup Family Golf</title>
+
+    <!-- Google Fonts -->
+    <!-- Full variable Montserrat: normal + italic, weights 100–900 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Your CSS File -->
+    <link rel="stylesheet" href="website1_style.css" />
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+
+  <body>
+    <!-- CUSTOM CURSOR ELEMENTS (must be inside body but above everything visually) -->
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <!-- NAVBAR (fixed at top) -->
+    <div id="nav">
+      <!-- Logo -->
+      <img
+        src="https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/logo-white.svg"
+        alt="Logo"
+      />
+
+      <!-- Clickable Nav Items -->
+      <h4>TOPTRACER RANGE</h4>
+      <h4>Golf lessons</h4>
+      <h4>Adventure Golf</h4>
+      <h4>Coffee Shop</h4>
+      <h4>Leagues</h4>
+    </div>
+
+    <!-- BACKGROUND VIDEO (fixed behind everything) -->
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      src="/golf-website---clone/videos/6541965-uhd_2560_1440_25fps.mp4"
+    ></video>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div id="main">
+      <!-- PAGE 1 (Hero Section) -->
+      <div id="page1">
+        <h1>Eat. Drink. Play.</h1>
+        <h2>Welcome to Sidcup Family Golf!</h2>
+        <p>
+          Sidcup Family Golf is a Toptracer driving range and crazy golf venue
+          in Sidcup, South East London. Passionate about technology, player
+          development and making golf fun and accessible to everyone.
+        </p>
+      </div>
+
+      <!-- PAGE 2 (Scrolling words + about us + cards) -->
+      <div id="page2">
+        <!-- RUNNING MARQUEE STYLE TEXT -->
+        <div id="scroller">
+          <div id="scroller-in">
+            <h4>TOPTRACER RANGE</h4>
+            <h4>Golf lessons</h4>
+            <h4>Adventure Golf</h4>
+            <h4>Coffee Shop</h4>
+            <h4>Leagues</h4>
+          </div>
+
+          <!-- Duplicate helps continuous loop scroll illusion -->
+          <div id="scroller-in">
+            <h4>TOPTRACER RANGE</h4>
+            <h4>Golf lessons</h4>
+            <h4>Adventure Golf</h4>
+            <h4>Coffee Shop</h4>
+            <h4>Leagues</h4>
+          </div>
+        </div>
+
+        <!-- ABOUT US SECTION -->
+        <div id="about_us">
+          <img
+            src="https://images.pexels.com/photos/1325681/pexels-photo-1325681.jpeg"
+            alt="Golf Range"
+          />
+
+          <div id="about_us_in">
+            <h3>ABOUT US</h3>
+            <p>
+              Home to a 46-bay, multi-tier, floodlit driving range powered by
+              Toptracer Range technology. Complimented by a practice green,
+              bunker, coffee shop, and American Golf Store. We also offer two
+              outdoor dinosaur-themed crazy golf courses.
+            </p>
+          </div>
+
+          <img
+            src="https://images.pexels.com/photos/1409004/pexels-photo-1409004.jpeg"
+            alt="Golf Course"
+          />
+        </div>
+
+        <!-- CARD SECTION (with overlay on hover) -->
+        <div id="card-container">
+          <div class="card" id="card1">
+            <div class="overlay">
+              <h4>TOPTRACER RANGE</h4>
+              <p>Experience state-of-the-art shot tracking technology.</p>
+            </div>
+          </div>
+
+          <div class="card" id="card2">
+            <div class="overlay">
+              <h4>Dinosaur Golf</h4>
+              <p>Fun themed adventure for families & friends.</p>
+            </div>
+          </div>
+
+          <div class="card" id="card3">
+            <div class="overlay">
+              <h4>Coffee Shop</h4>
+              <p>Relax & enjoy premium snacks and beverages.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- GREEN CALL-TO-ACTION DIV -->
+      <div id="green-div">
+        <!-- Left dinosaur -->
+        <img
+          src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-side.svg"
+          alt="Dinosaur"
+        />
+
+        <!-- Text in the center -->
+        <h4>
+          SIGN UP FOR EXCLUSIVE GOLF OFFERS, DISCOUNTS & EVENTS.
+          <br />
+          FUN FOR ALL AGES — JOIN OUR COMMUNITY!
+        </h4>
+
+        <!-- Right dinosaur -->
+        <img
+          src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-side.svg"
+          alt="Dinosaur"
+        />
+      </div>
+
+      <!-- PAGE 3 (Review Slider Section) -->
+      <div id="page3">
+        <!-- QUOTES that animate when review changes -->
+        <img
+          id="colon1"
+          class="quote-left"
+          src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/quote-left.svg"
+          alt=""
+        />
+        <img
+          id="colon2"
+          class="quote-right"
+          src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/quote-right.svg"
+          alt=""
+        />
+
+        <!-- Text that cycles with animation -->
+        <div id="slider">
+          <p>Excellent couple of hours, relaxing and fun! Highly recommend.</p>
+          <p>Open late & always enjoyable. The café is great too!</p>
+          <p>TopTracer makes practice exciting—love this place!</p>
+          <p>Adventure golf is always creative & super fun!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your JS File (always load last) -->
+    <script src="website1_script.js"></script>
+  </body>
+</html>
