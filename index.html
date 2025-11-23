@@ -1,24 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Projects</title>
-  <link rel="stylesheet" href="main-style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>simple-projects/ Portfolio Hub</title>
+    <link rel="stylesheet" href="main-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-mode">
+    <header>
+        <div class="header-content">
+            <!-- CHANGED HEADING to "PROJECT / REPO" -->
+            <h1 class="glitch-text" data-text="PROJECT / REPO">PROJECT / REPO</h1>
+            <p>// A collection of front-end projects focusing on UI, state management, and interaction logic.</p>
+        </div>
+        <div class="metadata">
+            <span>&lt;CodeStatus&gt; Online</span>
+            <span class="version">v1.0.25</span>
+        </div>
+    </header>
 
-  <header>
-    <h1>Simple Projects</h1>
-    <p class="subtitle">A collection of beginner-friendly web apps</p>
-  </header>
+    <main class="project-grid">
 
-  <div class="projects-container">
-    <a href="drumkit/" class="project-card">🥁 Drumkit</a>
-    <a href="esports-website/" class="project-card">🎮 Esports Website</a>
-    <a href="golf-website/" class="project-card">⛳ Golf Website</a>
-    <a href="Quick notes app/" class="project-card">📝 Quick Notes App</a>
-  </div>
+        <!-- PROJECT 1: quick-notes - FIX: Updated href to match actual folder name -->
+        <a href="Quick notes app/" class="project-card">
+            <div class="card-header">
+                <span class="card-icon">📝</span>
+                <h2 class="card-title">Quick notes app/</h2>
+            </div>
+            <p class="card-description">Advanced utility app demonstrating CRUD operations, LocalStorage persistence, and modern Glassmorphism theme toggling.</p>
+            <div class="card-tags">
+                <span class="tag tech-js">JavaScript</span>
+                <span class="tag tech-ui">UI/UX</span>
+                <span class="tag feature-data">Data Persistence</span>
+            </div>
+        </a>
+
+        <!-- PROJECT 2: drumkit -->
+        <a href="drumkit/" class="project-card">
+            <div class="card-header">
+                <span class="card-icon">🥁</span>
+                <h2 class="card-title">drumkit/</h2>
+            </div>
+            <p class="card-description">Interactive soundboard focusing on keypress event handling, audio API integration, and dynamic CSS transitions.</p>
+            <div class="card-tags">
+                <span class="tag tech-js">DOM Events</span>
+                <span class="tag tech-audio">Audio API</span>
+                <span class="tag feature-mini">Mini-Project</span>
+            </div>
+        </a>
+
+        <!-- PROJECT 3: esports-website -->
+        <a href="esports-website/" class="project-card">
+            <div class="card-header">
+                <span class="card-icon">🎮</span>
+                <h2 class="card-title">esports-website/</h2>
+            </div>
+            <p class="card-description">Static, multi-section marketing page exploring advanced Flexbox/Grid layouts and complex dark-theme responsive design.</p>
+            <div class="card-tags">
+                <span class="tag tech-css">CSS Grid</span>
+                <span class="tag feature-static">Static Site</span>
+                <span class="tag feature-responsive">Responsive</span>
+            </div>
+        </a>
+
+        <!-- PROJECT 4: golf-website -->
+        <a href="golf-website/" class="project-card">
+            <div class="card-header">
+                <span class="card-icon">🏌️</span>
+                <h2 class="card-title">golf-website/</h2>
+            </div>
+            <p class="card-description">A static site designed to practice UI design, hero sections, and clean, scalable HTML document structure.</p>
+            <div class="card-tags">
+                <span class="tag tech-css">UI Design</span>
+                <span class="tag feature-static">Static Site</span>
+                <span class="tag feature-hero">Hero Sections</span>
+            </div>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 simple-projects/. All data displayed is simulated.</p>
+    </footer>
 
 </body>
 </html>

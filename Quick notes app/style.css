@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
@@ -6,114 +6,217 @@
   box-sizing: border-box;
 }
 
+/* --------------------------------------------------
+   THEME VARIABLES - REFINED COLOR PALETTE
+-------------------------------------------------- */
+
 :root {
-  --brand-color: #6c63ff;
-  --brand-hover: #5a52ff;
+  --brand-color: #7e63b4; /* Deep Indigo */
+  --brand-hover: #6a4f9f;
+  --brand-active: #5f4891; /* New: darkens slightly on click */
 
-  --base-color: #eef1f6;
-  --surface-color: rgba(255, 255, 255, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.3);
+  /* Softer, warmer background gradient for light mode */
+  --background-gradient:
+    radial-gradient(circle at top left, rgba(126, 99, 180, 0.25), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(200, 205, 220, 0.3), transparent 68%);
 
-  --text-color: #1b1c22;
-  --secondary-text-color: #4a4d57;
+  --base-color: #f7f7fc; /* Softer, creamy background */
 
-  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 12px 26px rgba(0, 0, 0, 0.08);
+  --surface-color: rgba(255, 255, 255, 0.85); /* Slightly less transparency */
+  --glass-border: rgba(220, 220, 220, 0.6); /* Slightly more defined border */
 
-  --card-blur: blur(14px);
+  --text-color: #16161b; /* Near black */
+  --secondary-text-color: #5d616d;
+
+  /* Shadows remain soft */
+  --shadow-soft: 0 10px 20px rgba(15, 23, 42, 0.08);
+  --shadow-hover: 0 15px 30px rgba(15, 23, 42, 0.12);
+
+  --card-blur: blur(16px);
 }
+
+/* --------------------------------------------------
+   DARK THEME (body.dark-theme) - REFINED PALETTE
+-------------------------------------------------- */
 
 .dark-theme {
-  --brand-color: #7d84ff;
-  --brand-hover: #8e94ff;
+  --brand-color: #9d80d1; /* Soft Violet */
+  --brand-hover: #886cc0;
+  --brand-active: #7a61ae;
 
-  --base-color: #1f2026;
-  --surface-color: rgba(40, 41, 49, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Deep, harmonious dark gradient */
+  --background-gradient:
+    radial-gradient(circle at top left, rgba(157, 128, 209, 0.18), transparent 60%),
+    radial-gradient(circle at bottom right, rgba(50, 50, 70, 0.25), transparent 68%);
 
-  --text-color: #f0f0f8;
-  --secondary-text-color: #b9bcc7;
+  --base-color: #16161b; /* Deep charcoal */
 
-  --shadow-soft: 0 8px 15px rgba(0, 0, 0, 0.35);
-  --shadow-hover: 0 12px 25px rgba(0, 0, 0, 0.45);
+  --surface-color: rgba(30, 30, 38, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
 
-  --card-blur: blur(18px);
+  --text-color: #ededf2; /* Off-white */
+  --secondary-text-color: #a8aabf;
+
+  /* Softer glow in dark mode */
+  --shadow-soft: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.55);
+
+  --card-blur: blur(20px);
 }
+
+/* --------------------------------------------------
+   GLOBAL
+-------------------------------------------------- */
 
 body {
-  font-family: Poppins, sans-serif;
-  margin: 2rem;
-  background: var(--base-color);
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 2.5rem; /* Slightly larger margin */
+  min-height: 100vh;
+  background: var(--background-gradient), var(--base-color);
   color: var(--text-color);
-  transition: background 0.25s ease;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ---------- HEADER ---------- */
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* --------------------------------------------------
+   HEADER & HEADING - ENHANCED TYPOGRAPHY & LAYOUT
+-------------------------------------------------- */
 
 header {
+  /* CHANGE: Use flex-start and auto margins to push buttons to the right */
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.8rem;
+  gap: 1rem;
 }
 
 h1 {
-  font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  
+  /* CHANGE: Add text shadow for a chiseled/glowing effect */
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5), 
+               3px 3px 6px rgba(0, 0, 0, 0.1);
+  margin-right: auto; /* Pushes subsequent items to the end */
 }
 
-.add-note-btn,
+.dark-theme h1 {
+    text-shadow: 0 0 4px var(--brand-color), 
+                 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------
+   PRIMARY BUTTONS (Add note + Theme toggle)
+-------------------------------------------------- */
+
+.add-note-btn {
+    /* CHANGE: Add a slight right margin to separate it from the theme toggle */
+    margin-right: 0.5rem;
+    
+    background: var(--brand-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 8px 18px rgba(126, 99, 180, 0.3);
+}
+
 .theme-toggle-btn {
-  background: var(--brand-color);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.3rem;
-  border-radius: 0.65rem;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.18s ease;
+    background: var(--brand-color);
+    color: #ffffff;
+    border: none;
+    transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    box-shadow: 0 8px 18px rgba(126, 99, 180, 0.3);
+    
+    width: 44px;
+    height: 44px;
+    padding: 0.75rem;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-note-btn:hover,
 .theme-toggle-btn:hover {
   background: var(--brand-hover);
   transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(126, 99, 180, 0.4);
 }
 
-/* ---------- NOTES GRID ---------- */
+/* Ripple effect on click */
+.add-note-btn:active,
+.theme-toggle-btn:active {
+    background: var(--brand-active);
+    transform: scale(0.98);
+    box-shadow: 0 4px 10px rgba(126, 99, 180, 0.25);
+}
+
+/* Dark theme: soften glow a bit more */
+.dark-theme .add-note-btn,
+.dark-theme .theme-toggle-btn {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* Ensure the SVG icon fits */
+.theme-toggle-btn svg {
+  display: block;
+}
+
+
+/* --------------------------------------------------
+   NOTES GRID
+-------------------------------------------------- */
 
 .notes-grid {
   display: grid;
-  gap: 1.8rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem; /* Increased gap */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Wider min card size */
 }
 
-/* ---------- NOTE CARD (GLASS) ---------- */
+/* --------------------------------------------------
+   NOTE CARD
+-------------------------------------------------- */
 
 .note-card {
   background: var(--surface-color);
-  border-radius: 1rem;
-  padding: 1.6rem;
+  border-radius: 1.2rem;
+  padding: 1.8rem;
   border: 1px solid var(--glass-border);
   backdrop-filter: var(--card-blur);
   box-shadow: var(--shadow-soft);
   position: relative;
-  transition: all 0.3s ease;
-  animation: fadeInUp 0.45s ease both;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: fadeInUp 0.5s ease both;
 }
 
 .note-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px); /* Stronger lift */
   box-shadow: var(--shadow-hover);
+  border-color: var(--brand-color);
 }
 
-/* Smooth entrance animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -123,113 +226,252 @@ h1 {
 
 .note-title {
   font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 0.7rem;
+  font-weight: 700; /* Slightly heavier */
+  margin-bottom: 0.6rem;
+  word-wrap: break-word;
 }
 
 .note-content {
   color: var(--secondary-text-color);
   line-height: 1.6;
-  margin-bottom: 1rem;
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
-/* ---------- ICON BUTTONS ---------- */
+/* Dark theme note content uses secondary color */
+.dark-theme .note-content {
+  color: var(--secondary-text-color);
+}
+
+/* --------------------------------------------------
+   NOTE ACTION BUTTONS (Edit/Delete)
+-------------------------------------------------- */
 
 .note-actions {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.2rem;
+  right: 1.2rem;
   display: flex;
-  gap: 0.45rem;
+  gap: 0.5rem;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .note-card:hover .note-actions {
   opacity: 1;
   pointer-events: auto;
+  transform: translateY(-2px);
 }
 
 .edit-btn,
 .delete-btn {
-  width: 34px;
-  height: 34px;
-  backdrop-filter: blur(10px);
-  background: var(--surface-color);
+  /* CHANGE: Smaller size for subtle appearance */
+  width: 30px;
+  height: 30px;
+  
+  border-radius: 0.6rem;
   border: 1px solid var(--glass-border);
-  border-radius: 0.5rem;
+  background: var(--surface-color);
+  backdrop-filter: blur(10px);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  color: var(--text-color);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
+/* Edit: brand-tinted soft glass on hover */
 .edit-btn:hover {
-  transform: scale(1.08);
+  /* Adjusted scale for smaller button */
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background: var(--brand-color); /* Use main brand color */
+  color: #ffffff;
 }
 
+/* Delete: red tint only on hover */
 .delete-btn:hover {
-  background: #ff6464;
-  color: white;
-  transform: scale(1.08);
+  background: #dc3545; /* Slightly softer red */
+  color: #ffffff;
+  /* Adjusted scale for smaller button */
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
 }
 
-/* ---------- DIALOG ---------- */
+/* Shrink on click for tactile feel */
+.edit-btn:active,
+.delete-btn:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
+
+/* Dark Theme Adjustments for Actions */
+.dark-theme .edit-btn:hover {
+    background: var(--brand-color);
+}
+.dark-theme .delete-btn:hover {
+    background: #e74c3c;
+}
+
+/* --------------------------------------------------
+   DIALOG (ADD / EDIT NOTE)
+-------------------------------------------------- */
 
 dialog {
   background: var(--surface-color);
-  border-radius: 1.2rem;
+  border-radius: 1.4rem; /* Slightly larger border radius */
   border: 1px solid var(--glass-border);
-  padding: 0;
   width: 90vw;
-  max-width: 500px;
+  max-width: 540px; /* Slightly wider dialog */
+  padding: 0;
   backdrop-filter: var(--card-blur);
-  animation: dialogPop 0.3s ease;
+  box-shadow: var(--shadow-hover);
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: dialogPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncier animation */
 }
 
 @keyframes dialogPop {
   from {
     opacity: 0;
-    transform: scale(0.92);
+    transform: translate(-50%, -48%) scale(0.9);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(3px);
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(5px);
 }
 
 .dialog-content {
-  padding: 2rem;
+  padding: 2.5rem;
 }
 
-/* ---------- FORM ---------- */
+/* --------------------------------------------------
+   DIALOG HEADER + TITLE
+-------------------------------------------------- */
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.6rem;
+}
+
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.dark-theme .dialog-title {
+  color: var(--text-color);
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.close-btn:hover {
+  background: rgba(126, 99, 180, 0.15); /* Light brand tint on hover */
+  transform: scale(1.1);
+  color: var(--brand-color);
+}
+
+/* Dark theme close button contrast */
+.dark-theme .close-btn {
+  color: var(--secondary-text-color);
+}
+
+.dark-theme .close-btn:hover {
+  background: rgba(157, 128, 209, 0.15);
+  color: var(--brand-color);
+}
+
+/* --------------------------------------------------
+   FORM - INPUT FOCUS GLOW
+-------------------------------------------------- */
+
+.form-group {
+  margin-bottom: 1.8rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--secondary-text-color);
+}
 
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 0.9rem;
-  border-radius: 0.55rem;
+  padding: 1rem;
+  border-radius: 0.8rem;
   border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
   color: var(--text-color);
   font-size: 1rem;
-  transition: 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .form-input:focus,
 .form-textarea:focus {
   outline: none;
   border-color: var(--brand-color);
+  /* Enhanced focus glow */
+  box-shadow: 0 0 0 4px rgba(126, 99, 180, 0.15);
 }
+
+.form-textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Dark theme input / textarea fix */
+.dark-theme .form-input,
+.dark-theme .form-textarea {
+  background: rgba(40, 42, 55, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-color);
+}
+/* Dark theme input focus glow */
+.dark-theme .form-input:focus,
+.dark-theme .form-textarea:focus {
+  box-shadow: 0 0 0 4px rgba(157, 128, 209, 0.15);
+}
+
+.dark-theme .form-input::placeholder,
+.dark-theme .form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* --------------------------------------------------
+   DIALOG ACTIONS (Soft Glass Buttons)
+-------------------------------------------------- */
 
 .dialog-actions {
   display: flex;
@@ -240,42 +482,91 @@ dialog::backdrop {
 
 .cancel-btn,
 .save-btn {
-  padding: 0.75rem 1.4rem;
-  border-radius: 0.55rem;
-  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.8rem;
   cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--text-color);
+  transition: background 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
 }
 
-.cancel-btn {
-  background: rgba(255, 255, 255, 0.2);
-}
-
+/* Cancel: neutral soft glass */
 .cancel-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
+/* Save: tinted soft glass */
 .save-btn {
   background: var(--brand-color);
-  color: white;
+  color: #ffffff;
+  border-color: var(--brand-color);
+  box-shadow: 0 6px 14px rgba(126, 99, 180, 0.25);
 }
 
 .save-btn:hover {
   background: var(--brand-hover);
   transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(126, 99, 180, 0.35);
 }
 
-/* ---------- EMPTY STATE ---------- */
+/* Ripple effect on click */
+.cancel-btn:active,
+.save-btn:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
+}
+
+/* Dark Theme Dialog Buttons */
+.dark-theme .cancel-btn {
+    background: rgba(50, 50, 70, 0.6);
+    color: var(--text-color);
+}
+.dark-theme .cancel-btn:hover {
+    background: rgba(50, 50, 70, 0.8);
+}
+.dark-theme .save-btn {
+    background: var(--brand-color);
+}
+
+
+/* --------------------------------------------------
+   EMPTY STATE
+-------------------------------------------------- */
 
 .empty-state {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   color: var(--secondary-text-color);
 }
 
 .empty-state h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text-color);
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+/* --------------------------------------------------
+   ACCESSIBILITY IMPROVEMENT (Focus States)
+-------------------------------------------------- */
+
+.add-note-btn:focus-visible,
+.theme-toggle-btn:focus-visible,
+.edit-btn:focus-visible,
+.delete-btn:focus-visible,
+.close-btn:focus-visible,
+.cancel-btn:focus-visible,
+.save-btn:focus-visible {
+  outline: 2px solid var(--brand-color);
+  outline-offset: 3px;
 }
