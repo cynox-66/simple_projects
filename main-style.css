@@ -163,7 +163,7 @@ header p {
 /* Highlighted tags */
 .tag.tech-js { background-color: #2b2b10; color: #ffeb3b; border-color: #5d5d1c; }
 .tag.tech-css { background-color: #1a1e2b; color: #64b5f6; border-color: #3b507b; }
-.tag.tech-audio { background-color: #2b1a2a; color: #ff80ab; border-color: #6a4055; }
+/* .tag.tech-audio { background-color: #2b1a2a; color: #ff80ab; border-color: #6a4055; } */
 .tag.tech-ui, .tag.feature-data { background-color: #1a2a2b; color: #80cbc4; border-color: #406a6a; }
 
 /* --------------------------------------------------
