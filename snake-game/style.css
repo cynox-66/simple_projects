@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+:root{
+    /* Retro/Neon Colors (Softer Tones) */
+    --color-bg: #111111; /* Slightly lighter black */
+    --color-text: #00e080; /* Brighter, calmer green */
+    --color-grid: #1a4a34; /* Dark green/grey for subtle grid lines */
+    --color-snake: #00cc77; /* Main snake color */
+    --color-head: #ffffff; /* White head */
+    --color-food: #ff6600; /* Neon Orange/Red */
+
+    /* Spacing variables */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --border-radius-sm: 4px;
+}
+html{
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section{
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    max-height: 800px;
+    width: 95%;
+    max-width: 800px;
+    gap: var(--spacing-md);
+    border: 1px solid var(--color-grid);
+    box-shadow: 0 0 8px rgba(0, 224, 128, 0.4); /* Subtle glow */
+    background-color: #050505;
+}
+section .infos{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-shadow: 0 0 3px var(--color-text);
+}
+.info{
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-grid);
+    border-radius: var(--border-radius-sm);
+    background-color: #1a1a1a;
+}
+
+/* Board and Blocks */
+.board-container {
+    position: relative;
+    flex-grow: 1;
+}
+.board{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+    border: 1px solid var(--color-grid);
+    background-color: #030303;
+}
+.block{
+    border: 1px dashed var(--color-grid);
+    opacity: 0.3; /* Make grid lines very subtle */
+}
+
+/* Game Elements */
+.fill{
+    background-color: var(--color-snake);
+    box-shadow: 0 0 3px var(--color-snake);
+    border: none;
+    opacity: 1;
+}
+.food{
+    background-color: var(--color-food);
+    box-shadow: 0 0 6px var(--color-food);
+    border-radius: 50%; 
+    transition: all 0.1s;
+    opacity: 1;
+}
+.snake-head {
+    background-color: var(--color-head);
+    border-radius: 10%;
+    box-shadow: 0 0 8px var(--color-head);
+}
+
+/* Modals and Text */
+.modal{
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.modal > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-snake);
+    box-shadow: 0 0 10px var(--color-snake);
+    background-color: #000000;
+}
+.modal .game-over {
+    display: none;
+}
+.retro-text {
+    font-size: 2em;
+    color: var(--color-head);
+    text-shadow: 0 0 5px var(--color-head);
+}
+.btn{
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-snake);
+    background-color: #050505;
+    color: var(--color-snake);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 3px var(--color-snake);
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn:hover{
+    background-color: var(--color-snake);
+    color: var(--color-bg);
+    transform: scale(1.05);
+}
+
+/* Pause Message */
+.pause-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: var(--spacing-lg);
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--color-food);
+    color: var(--color-food);
+    font-size: 2em;
+    text-align: center;
+    box-shadow: 0 0 10px var(--color-food);
+    z-index: 50;
+}
+.pause-message .sub-text {
+    font-size: 0.5em;
+    margin-top: var(--spacing-sm);
+}
+.hidden {
+    display: none;
+}
+
+/* Mobile Controls */
+.mobile-controls {
+    display: none; /* Hidden by default on desktop */
+    margin-top: var(--spacing-xl);
+    gap: var(--spacing-sm);
+    align-items: center;
+    justify-content: center;
+}
+.control-btn {
+    font-size: 1.5em;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin: 5px;
+    border: 1px solid var(--color-snake);
+    background-color: #050505;
+    color: var(--color-snake);
+    box-shadow: 0 0 5px var(--color-snake);
+    user-select: none; 
+}
+.horizontal-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+}
+.mobile-controls .up, .mobile-controls .down {
+    width: 150px;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    section {
+        padding: var(--spacing-md);
+    }
+    .mobile-controls {
+        display: flex;
+        flex-direction: column;
+    }
+}

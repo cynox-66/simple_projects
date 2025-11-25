@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game - Retro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <!-- Audio for background music -->
+        <audio id="bg-music" loop>
+            <source src="snake_man.mp3" type="audio/mpeg">
+        </audio>
+
+        <section>
+            <div class="infos">
+                <div class="info">
+                    <h3>HIGH SCORE:
+                        <span id="high-score">0</span>
+                    </h3>
+                </div>
+                <div class="info">
+                    <h3>SCORE:
+                        <span id="score">0</span>
+                    </h3>
+                </div>
+                <div class="info">
+                    <h3>TIME:
+                        <span id="time">00:00</span>
+                    </h3>
+                </div>
+            </div>
+            <div class="board-container">
+                <div class="board"></div>
+                <div class="pause-message hidden">
+                    --- PAUSED ---
+                    <div class="sub-text">Press SPACE to Resume</div>
+                </div>
+            </div>
+            
+            <!-- Mobile/Touch Controls -->
+            <div class="mobile-controls">
+                <button class="control-btn up" data-direction="up">▲</button>
+                <div class="horizontal-controls">
+                    <button class="control-btn left" data-direction="left">◀</button>
+                    <button class="control-btn right" data-direction="right">▶</button>
+                </div>
+                <button class="control-btn down" data-direction="down">▼</button>
+            </div>
+        </section>
+        
+        <!-- Modals -->
+        <div class="modal">
+            <div class="start-game">
+                <h3 class="retro-text">SNAKE//GRID v2.0</h3>
+                <p>Use Arrow Keys or Mobile Pad to move. Press SPACE to Pause.</p>
+                <button class="btn btn-start">START GAME</button>
+            </div>
+            <div class="game-over">
+                <h3 class="retro-text">GAME OVER</h3>
+                <p>FINAL SCORE: <span id="final-score">0</span></p>
+                <button class="btn btn-restart">RESTART</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
